@@ -1,0 +1,12 @@
+<%= form_tag("/search", method: "get") do %>
+	<h1>Search an Item by its attributes:</h1>
+  <%= label_tag(:title, "Title:") %>
+  <%= text_field_tag(:title) %>
+  <div>
+  <%= label_tag(:desc, "Description:") %>
+  <%= text_field_tag(:desc) %></div>
+  <%= label_tag(:type, "Type:") %>
+  <%= text_field_tag(:title) %>
+  <div>
+  <%= submit_tag("Search Item") %></div>
+<% end %>
