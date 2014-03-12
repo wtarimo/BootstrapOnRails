@@ -1,0 +1,170 @@
+html, body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    background-color: #eeefe9;
+}
+h1, h2, h3{
+    font-family: 'Abel', sans-serif;
+}
+h4{
+    font-family: 'Abel', sans-serif;
+    font-weight: 600;   
+}
+b, strong{
+    font-weight: 400;
+}
+#wrapper {
+  padding-left: 0;
+}
+
+.page-wrapper {
+  width: 100%;
+  padding: 5px 15px;
+}
+.scrollable {
+	height: 420px;
+	overflow: auto;
+}
+.tableItem {
+	height: 600px;
+	overflow: auto;
+}
+.side-nav {
+	margin-left: -225px;
+	left: 225px;
+	width: 200px;
+	position: fixed;
+	top: 50px;
+	height: 100%;
+	border-radius: 0;
+	border: none;
+	background-color: #222222;
+	overflow-y: auto;
+}
+.dashName{
+    position:absolute;
+    padding-left:200px;
+    font-size:30px;
+    font-weight: 600; 
+}
+.dashCred{
+    position:absolute;
+    padding-left:400px;
+}
+.dashPicture{
+     margin-top:50px; 
+     width:120px;
+     margin-left:50px;
+     margin-bottom:-60px;
+}
+.dashPanel{
+    background-image:url("http://autoimagesize.com/wp-content/uploads/2014/01/rainbow-aurora-background-wallpaper-colour-images-rainbow-background.jpg"); 
+}
+.coursePanel{
+	background-image:url(../images/courseDash.jpg);
+}
+.carousel-caption{
+    z-index: 10;
+}
+.carousel-inner > .item > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+}
+.logins{
+	left:5px;
+}
+.gravatar{
+	height:auto; 
+	width:auto; 
+	max-width:40px;
+	max-height:40px;
+}
+.alert{
+	font-family: 'Abel', sans-serif;
+	font-size: 15px;
+	padding: 0px 0px;
+}
+.notification{
+	padding-top: 0px;
+}
+.carousel-inner > .item{
+    height: 600px;   
+}
+
+@media(min-width: 768px){
+	.carousel-inner > .item{
+	    height: 600px;  
+	}
+	#wrapper {
+		padding-left: 200px;
+	}
+
+  	.page-wrapper {
+		padding: 15px 15px;
+  	}
+}
+.tpad{
+    padding-top: 70px;
+}
+.rpad{
+    padding-right: 15px;
+}
+.bpad{
+    padding-bottom: 50px;
+}
+.padded{
+    padding: 100px 15px;
+}
+hr {
+    border-top: 1px solid #c9c9c9;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.pageHolder{
+	text-align:center;
+}
+.courseDetails{
+	text-align:center;
+	padding-top:0px;
+	padding-bottom:0px;
+	font-family: 'Abel', sans-serif;
+	font-size: 15px;
+}
+.lectureDetails{
+	padding-top:0px;
+	padding-bottom:0px;
+	font-family: 'Abel', sans-serif;
+	font-size: 15px;
+	text-align:auto;
+}
+
+.bs-docs-footer{
+	background-color:#eeefe9;
+	text-align:center;
+	border-top:1px solid #e5e5e5;
+}
+.bs-docs-footer-links{
+	margin-top:20px;
+	padding-left:0;color:#999
+}
+.bs-docs-footer-links li{
+	display:inline;
+	padding:0 2px;
+}
+.bs-docs-footer-links li:first-child{
+	padding-left:0;
+}
+@media (min-width:768px){
+	.bs-docs-footer p {
+		margin-bottom:0;
+	}
+}
+.bs-docs-footer{
+	margin-top:0;
+	border-top:0;
+}
