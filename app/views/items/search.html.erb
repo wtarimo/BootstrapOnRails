@@ -4,8 +4,8 @@
       <div class="page-header">
         <h1>Search</h1>
       </div>
-      <% @item = Item.new %>
-      <%= form_for(@item, url: search_items_path) do |f| %>
+      <% @item = Item.new%>
+      <%= form_for(@item, url: search_items_path,method: "get") do |f| %>
 
         <div class="form-group">
           <%= f.label :title, 'Title' %>
@@ -16,59 +16,48 @@
           <%= f.label :description, 'Description' %>
           <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
         </div>
+        <% types = Type.all.map {|type| [type.title,type.id]} %>
 
         <div class="form-group">
           <%= f.label :type, 'Type' %>
-          <%= f.select :type, options_for_select([['Book', 'book'],
-                                                    ['Clothing', 'clothing'],
-                                                    ['Cellphone', 'cellphone'],
-                                                    ['Computer', 'computer']], params[:q].try(:[], :type)),
+          <%= f.select :type, options_for_select(types, params[:q].try(:[], :type)),
                        { include_blank: 'Any' },
                        { class: 'form-control' } %>
         </div>
-
-        <%= f.submit 'Search', class: 'btn btn-success' %>
-      <% end %>
-      <%= button_tag(type: "submit", class: "btn btn-success") do %>
-    <i class="fa fa-search"> Search</i>
-  <% end %>
-      <hr>
-      <p>Possible search terms:</p>
-      <ul>
-        <li>Title: "galaxy"</li>
-        <li>Title: "iphone"</li>
-        <li>Description: "cosplay"</li>
-        <li>Description: "power"</li>
-        <li>Select: "Any"</li>
-      </ul>
-    </div>
-  </div>
-
-  <a href="#" id="updateButton" class="btn btn-primary btn-large btn-block"><span class="fa fa-location-arrow"></span> Update</a>
-  <%= icon('github') %><hr>
-  <%= icon('flag', 'Font Awesome', id: 'my-icon', class: 'strong') %>
-
-  <% unless params[:q].nil? %>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="page-header">
-          <h1>Results</h1>
+        <div class="form-group">
+          <%= label_tag :search_type, 'Search Type' %>
+          <%= select_tag :search_type, options_for_select([['Any Conditions', 1], ['All Conditions', 2]]) %>
         </div>
 
-        <% if @items.empty? %>
-          <div class="alert alert-info">
-            No items found.
-          </div>
+        <%= f.button(type: "submit", class: "btn btn-primary btn-block") do %>
+          <i class="fa fa-search"> Search</i>
         <% end %>
+      <% end %>
+     
 
-        <% @items.each do |item| %>
-          <h3>
-            <%= item.title %><br />
-            <small><%= item.type %></small>
-          </h3>
-          <p><%= item.description %></p>
-        <% end %>
-      </div>
+      <% unless params[:q].nil? %>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+              <h1>Results</h1>
+            </div>
+
+            <% if @items.empty? %>
+              <div class="alert alert-info">
+                No items found.
+              </div>
+            <% end %>
+
+            <% @items.each do |item| %>
+              <h3>
+                <%= item.title %><br />
+                <small><%= item.type %></small>
+              </h3>
+              <p><%= item.description %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

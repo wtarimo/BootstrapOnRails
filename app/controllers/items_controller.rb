@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-  	
+  	puts "*********************** ",params[:item]
   end
 
   private
