@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
+  <h1>Search Form</h1>
     <div class="col-md-6 col-md-offset-3">
-      <div class="page-header">
-        <h1>Search</h1>
-      </div>
       <% @item = Item.new%>
       <%= form_for(@item, url: search_items_path,method: "get") do |f| %>
 
@@ -15,6 +13,10 @@
         <div class="form-group">
           <%= f.label :description, 'Description' %>
           <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :owner, 'Owner' %>
+          <%= f.text_field :owner, class: 'form-control', placeholder: 'Owner' %>
         </div>
         <% types = Type.all.map {|type| [type.title,type.id]} %>
 
@@ -35,5 +37,35 @@
       <% end %>
     
     </div>
+    <hr>
+    <% if @items.size>0 %>
+      <h1>Search Results</h1>
+
+      <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.title %></td>
+              <td><%= item.description %></td>
+              <td><%= item.type.title %></td>
+              <td><%= item.owner %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    <% else %>
+      <h1>No Matching Items</h1>
+    <% end %>
   </div>
 </div>

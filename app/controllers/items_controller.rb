@@ -62,8 +62,27 @@ class ItemsController < ApplicationController
   end
 
   def search
-  	puts "*********************** ",params[:item]
+    @items = []
+    if params[:item]
+      if params[:search_type]=='2'
+        @items = Item.where("title LIKE ? AND description LIKE ? AND owner LIKE ? AND type_id LIKE ?",
+                            '%'+params[:item][:title]+'%','%'+params[:item][:description]+'%',
+                            '%'+params[:item][:owner]+'%','%'+params[:item][:type]+'%')
+      else
+        if params[:item][:title]
+          @items=@items+ Item.where("title LIKE ?",'%'+params[:item][:title]+'%')
+        elsif params[:item][:description]
+          @items=@items+ Item.where("description LIKE ?",'%'+params[:item][:description]+'%')
+        elsif params[:item][:owner]
+          @items=@items+ Item.where("owner LIKE ?",'%'+params[:item][:owner]+'%')
+        elsif params[:item][:type]
+          @items=@items+ Item.where("type_id LIKE ?",'%'+params[:item][:type]+'%')
+        end
+      end
+    end
+    @items = @items.uniq
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
